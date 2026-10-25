@@ -1,0 +1,27 @@
+# ===== Keil MDK 编译产物（可随时重新编译生成，不需要提交）=====
+Objects/
+Listings/
+DebugConfig/
+
+# Keil 用户界面布局文件（每个人电脑上不同）
+*.uvguix.*
+
+# 备份文件
+*.bak
+
+# 散落的编译中间文件（保险起见）
+*.o
+*.d
+*.crf
+*.lst
+*.axf
+*.lnp
+*.dep
+*.iex
+
+# ===== Windows 系统文件 =====
+Thumbs.db
+Desktop.ini
+
+# Keil 差异备份文件
+*.orig
