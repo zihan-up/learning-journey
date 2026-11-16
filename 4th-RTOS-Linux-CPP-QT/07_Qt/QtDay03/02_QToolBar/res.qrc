@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Image/bee.jpg</file>
+        <file>Image/butterfly.png</file>
+        <file>Image/duck.gif</file>
+        <file>Image/feitui.gif</file>
+        <file>Image/Frame.jpg</file>
+        <file>Image/linux.png</file>
+        <file>Image/mario.gif</file>
+        <file>Image/rose.jpeg</file>
+        <file>Image/sunny.png</file>
+        <file>Image/tortoise.jpg</file>
+        <file>Image/up.png</file>
+        <file>Image/wangdao.png</file>
+        <file>Image/zhangyi.gif</file>
+    </qresource>
+</RCC>

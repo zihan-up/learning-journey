@@ -1,0 +1,7 @@
+2025-07-14 10:18:00,100  [INFO] this is a info message
+2025-07-14 10:18:00,101  [NOTICE] this is a notice message
+2025-07-14 10:18:00,101  [WARN] this is a warn message
+2025-07-14 10:18:00,101  [ERROR] this is an error message
+2025-07-14 10:18:00,101  [CRIT] this is a crit message
+2025-07-14 10:18:00,101  [ALERT] this is a alert message
+2025-07-14 10:18:00,101  [FATAL] this is a fatal message

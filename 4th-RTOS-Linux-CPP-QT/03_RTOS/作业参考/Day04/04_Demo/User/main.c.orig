@@ -1,0 +1,43 @@
+#include "stm32f10x.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "UART1.h"
+
+
+TaskHandle_t  hand1, hand2;
+void task1(void  *p) {
+
+    while (1) {
+
+        vTaskDelay(5000);
+    }
+}
+
+void task2(void *p) {
+
+    while (1) {
+
+        vTaskDelay(5000);
+    }
+}
+
+void beginTask(void *p){
+	 xTaskCreate(task1, "Task1", configMINIMAL_STACK_SIZE, NULL, 2, &hand1);
+   xTaskCreate(task2, "Task2", configMINIMAL_STACK_SIZE, NULL, 2, &hand2);
+	
+	while(1){
+		char buf[80] = {0};
+		vTaskList(buf);
+		printf1("%d\r\n", buf);
+		vTaskDelay(5000);
+	}
+}
+int main() {
+    USART1_Init();
+
+    xTaskCreate(beginTask, "beginTask", configMINIMAL_STACK_SIZE, NULL, 2, NULL);
+    vTaskStartScheduler();
+
+}
+
+

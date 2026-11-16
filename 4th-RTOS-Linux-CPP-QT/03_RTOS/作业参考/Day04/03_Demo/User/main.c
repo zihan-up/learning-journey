@@ -1,0 +1,59 @@
+#include "stm32f10x.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "UART1.h"
+
+
+TaskHandle_t  hand1, hand2;
+void task1(void  *p) {
+
+    while (1) {
+        TaskStatus_t   xTaskDetails;
+        // vTaskGetInfo(hand1, &xTaskDetails,  pdTRUE, eInvalid);
+        vTaskGetInfo(NULL, &xTaskDetails,  pdTRUE, eInvalid); // NULL代表当前任务
+
+        // 打印获取到的任务信息
+        printf1("Task1 Name: %s  \r\n", xTaskDetails.pcTaskName);
+        printf1("Task1 Priority: %d \r\n", xTaskDetails.uxCurrentPriority);
+        printf1("Task1 Base Priority: %d \r\n", xTaskDetails.uxBasePriority);
+        printf1("Task1 State: %d \r\n", xTaskDetails.eCurrentState);
+        printf1("Task1 Stack Base Address: %p \r\n", xTaskDetails.pxStackBase);
+        printf1("Task1Stack High Water Mark: %d \r\n", xTaskDetails.usStackHighWaterMark);
+        printf1("Task1 Run Time: %d ticks \r\n", xTaskDetails.ulRunTimeCounter);
+
+        vTaskDelay(5000);
+    }
+}
+
+void task2(void *p) {
+
+    while (1) {
+        TaskStatus_t   xTaskDetails;
+        // vTaskGetInfo(hand2, &xTaskDetails,  pdTRUE, eInvalid);
+        vTaskGetInfo(NULL, &xTaskDetails,  pdTRUE, eInvalid); // NULL代表当前任务
+
+        // 打印获取到的任务信息
+        printf1("Task2 Name: %s  \r\n", xTaskDetails.pcTaskName);
+        printf1("Task2 Priority: %d \r\n", xTaskDetails.uxCurrentPriority);
+        printf1("Task2 Base Priority: %d \r\n", xTaskDetails.uxBasePriority);
+        printf1("Task2 State: %d \r\n", xTaskDetails.eCurrentState);
+        printf1("Task2 Stack Base Address: %p \r\n", xTaskDetails.pxStackBase);
+        printf1("Task2 Stack High Water Mark: %d \r\n", xTaskDetails.usStackHighWaterMark);
+        printf1("Task2 Run Time: %d ticks \r\n", xTaskDetails.ulRunTimeCounter);
+
+        vTaskDelay(5000);
+    }
+}
+
+int main() {
+    USART1_Init();
+
+    xTaskCreate(task1, "Task1", configMINIMAL_STACK_SIZE, NULL, 2, &hand1);
+    xTaskCreate(task2, "Task2", configMINIMAL_STACK_SIZE, NULL, 2, &hand2);
+    vTaskStartScheduler();
+
+}
+
+
+
+
